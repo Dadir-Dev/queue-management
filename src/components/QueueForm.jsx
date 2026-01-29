@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaUserPlus } from "react-icons/fa"
 export default function QueueForm({ onAddCustomer }) {
   const [customer, setCustomer] = useState("");
   const [service, setService] = useState("");
@@ -37,9 +38,11 @@ export default function QueueForm({ onAddCustomer }) {
 
         <button
           type="submit"
-          className="bg-cyan-500 text-white px-4 py-2 rounded"
+          className="bg-cyan-500 text-white font-semibold w-full px-6 py-2 rounded"
         >
-          Add to Queue
+          <span className="inline-flex items-center gap-2 justify-center">
+            <FaUserPlus /> Add to Queue
+          </span>
         </button>
       </form>
     </div>

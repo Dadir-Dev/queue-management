@@ -6,18 +6,16 @@ export default function App() {
   const [queue, setQueue] = useState([]);
 
   const addToQueue = (customer) => {
-    setQueue([...queue, customer]);
+    // Use Date.now() as a number/unique ID
+    setQueue([...queue, { ...customer, id: Date.now(), status: "waiting" }]);
   };
 
-  /* const removeFromQueue = (index) => {
-    setQueue(queue.filter((_, i) => i !== index));
-  };
+  const removeFromQueue = (id) => setQueue(queue.filter(customer => customer.id !== id))
 
-  const updateStatus = (index, status) => {
-    const updatedQueue = [...queue];
-    updatedQueue[index].status = status;
-    setQueue(updatedQueue);
-  }; */
+  const updateStatus = (id, newStatus) => setQueue(queue.map(customer =>
+    customer.id === id ? { ...customer, status: newStatus } : customer
+  ))
+
 
   return (
     <div className="App text-center bg-black min-h-screen p-8 text-white">
