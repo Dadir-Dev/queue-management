@@ -14,6 +14,7 @@ export default function QueueForm({ onAddCustomer }) {
     if (!customer.trim() || !service.trim()) return;
     onAddCustomer({ customer, service });
     setCustomer("");
+    setService("")
   };
 
   return (

@@ -7,7 +7,15 @@ export default function App() {
 
   const addToQueue = (customer) => {
     // Use Date.now() as a number/unique ID
-    setQueue([...queue, { ...customer, id: Date.now(), status: "waiting" }]);
+    setQueue((prevQueue) => {
+      const nextQueue = [
+        ...prevQueue,
+        { ...customer, id: Date.now(), status: "waiting" },
+      ];
+
+      console.log("Queue list after submit:", nextQueue);
+      return nextQueue;
+    });
   };
 
   const removeFromQueue = (id) => setQueue(queue.filter(customer => customer.id !== id))
