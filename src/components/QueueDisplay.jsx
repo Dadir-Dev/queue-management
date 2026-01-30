@@ -23,39 +23,46 @@ function QueueDisplay({ queueList, onUpdateStatus, onRemoveFromQueue }) {
           {queueList.map((item) => (
             <li
               key={item.id}
-              className="flex items-center p-2 border-neutral-700 bg-neutral-900 rounded-lg"
+              className="flex items-center justify-between text-left p-2 border-neutral-700 bg-neutral-900 rounded-lg"
             >
               <div className="">
-                <h3 className="font-medium text-left">{item.customer}</h3>
+                <h3 className="font-medium">{item.customer}</h3>
                 <p className="text-gray-500">{item.service}</p>
-                <span className=""></span>
-                {/* <p
-                  className="ml-3 text-xs uppercase px-2 py-1 rounded"
+                <span
+                  className="text-xs uppercase px-3 py-2 rounded"
                   style={{
                     backgroundColor: getStatusColor(item.status),
                     color: "#000",
                   }}
                 >
                   {item.status}
-                </p> */}
+                </span>
               </div>
 
-              {/* <div className="flex gap-2">
+              <div className="flex gap-2">
                 {item.status === "waiting" && (
                   <button
                     onClick={() => onUpdateStatus(item.id, "serving")}
-                    className="text-sm bg-blue-600 px-2 py-1 rounded"
+                    className="text-sm bg-blue-600 px-3 py-2 rounded"
                   >
                     Serve
                   </button>
                 )}
+                {item.status === "serving" && (
+                  <button
+                    onClick={() => onUpdateStatus(item.id, "completed")}
+                    className="text-sm bg-blue-600 px-3 py-2 rounded"
+                  >
+                    Complete
+                  </button>
+                )}
                 <button
                   onClick={() => onRemoveFromQueue(item.id)}
-                  className="text-sm bg-red-600 px-2 py-1 rounded"
+                  className="text-sm bg-red-600 px-3 py-2 rounded"
                 >
                   Remove
                 </button>
-              </div> */}
+              </div>
             </li>
           ))}
         </ul>
