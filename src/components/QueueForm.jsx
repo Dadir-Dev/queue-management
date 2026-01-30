@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaUserPlus } from "react-icons/fa"
+import { FaUserPlus } from "react-icons/fa";
 export default function QueueForm({ onAddCustomer }) {
   const [customer, setCustomer] = useState("");
   const [service, setService] = useState("");
@@ -14,27 +14,32 @@ export default function QueueForm({ onAddCustomer }) {
     if (!customer.trim() || !service.trim()) return;
     onAddCustomer({ customer, service });
     setCustomer("");
-    setService("")
+    setService("");
   };
 
   return (
-    <div className="border p-4 rounded-lg bg-gray-900">
+    <div className="p-4 rounded-lg bg-neutral-800">
       <h2 className="text-2xl font-bold mb-6">Add to Queue</h2>
       <form onSubmit={handleSubmit}>
-
         <input
           type="text"
           value={customer}
           onChange={handleChange}
           placeholder="Enter customer name"
-          className="border p-2 rounded w-full mb-4"
+          className="border-2 border-indigo-600 bg-neutral-900 p-2 rounded w-full mb-4"
         />
 
-        <select value={service} onChange={(e) => setService(e.target.value)} className="border p-2 rounded w-full mb-4">
-          <option value="" className="text-gray-600">Select Service</option>
-          <option value="Consultation" className="text-black">Consultation</option>
-          <option value="Payment" className="text-black">Payment</option>
-          <option value="Support" className="text-black">Support</option>
+        <select
+          value={service}
+          onChange={(e) => setService(e.target.value)}
+          className="border-2 border-indigo-600 bg-neutral-900 p-2 rounded text-white w-full mb-4 "
+        >
+          <option value="" className="text-gray-400">
+            Select Service
+          </option>
+          <option value="Consultation">Consultation</option>
+          <option value="Payment">Payment</option>
+          <option value="Support">Support</option>
         </select>
 
         <button
