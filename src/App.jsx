@@ -1,6 +1,7 @@
 import "./App.css";
 import { useState } from "react";
 import QueueForm from "./components/QueueForm";
+import QueueDisplay from "./components/QueueDisplay";
 
 export default function App() {
   const [queue, setQueue] = useState([]);
@@ -18,15 +19,18 @@ export default function App() {
     });
   };
 
-  const removeFromQueue = (id) => setQueue(queue.filter(customer => customer.id !== id))
+  const removeFromQueue = (id) =>
+    setQueue(queue.filter((customer) => customer.id !== id));
 
-  const updateStatus = (id, newStatus) => setQueue(queue.map(customer =>
-    customer.id === id ? { ...customer, status: newStatus } : customer
-  ))
-
+  const updateStatus = (id, newStatus) =>
+    setQueue(
+      queue.map((customer) =>
+        customer.id === id ? { ...customer, status: newStatus } : customer,
+      ),
+    );
 
   return (
-    <div className="App text-center bg-black min-h-screen p-8 text-white">
+    <div className="App text-center bg-neutral-900 min-h-screen p-8 text-white">
       <header>
         <h1 className="text-3xl font-bold text-cyan-500">
           Queue Management System
@@ -40,7 +44,11 @@ export default function App() {
           <QueueForm onAddCustomer={addToQueue} />
         </div>
         <div>
-          <h2 className="text-xl font-semibold">Queue Display</h2>
+          <QueueDisplay
+            queueList={queue}
+            onUpdateStatus={updateStatus}
+            onRemoveFromQueue={removeFromQueue}
+          />
         </div>
       </main>
     </div>
