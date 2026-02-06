@@ -1,10 +1,58 @@
 :root {
-  --success: #4caf50;
-  --warning: #ff9800;
-  --info: #2196f3;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --info: #3b82f6;
   --text: #fff;
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+  --background: #0f172a;
+  --card-bg: #1e293b;
+  --card-border: #334155;
+  --text-secondary: #94a3b8;
+  --gradient-start: #8b5cf6;
+  --gradient-end: #3b82f6;
+  --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+* {
+  transition: all 0.2s ease;
 }
 
 .App {
   text-align: center;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Shake animation */
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-10px);
+  }
+  75% {
+    transform: translateX(10px);
+  }
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
 }
