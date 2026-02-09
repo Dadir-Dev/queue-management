@@ -7,12 +7,12 @@ import { FiUsers, FiTrendingUp } from "react-icons/fi";
 export default function App() {
   const [queue, setQueue] = useState([]);
 
-  const addToQueue = (customer) => {
+  const addToQueue = (customerData) => {
     setQueue((prevQueue) => {
       const nextQueue = [
         ...prevQueue,
         {
-          ...customer,
+          ...customerData,
           id: Date.now(),
           status: "waiting",
           timestamp: new Date(),
