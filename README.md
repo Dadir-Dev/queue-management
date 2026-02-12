@@ -1,16 +1,142 @@
-# React + Vite
+# QueueFlow Pro
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, frontend-first queue management application built with **React + Vite** and styled with **Tailwind CSS**.
 
-Currently, two official plugins are available:
+QueueFlow Pro helps teams track customer flow in real time with a clean, dashboard-like interface for adding customers, updating service status, and monitoring queue health.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Live queue tracking** with status transitions:
+  - `waiting` → `serving` → `completed`
+- **Quick customer intake** form with service selection
+- **Operational stats cards** (total, waiting, serving)
+- **Instant actions**:
+  - Start serving
+  - Mark complete
+  - Remove customer
+- **Modern UI** with gradient glassmorphism and responsive layout
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🧱 Tech Stack
+
+- **React 19**
+- **Vite 7**
+- **Tailwind CSS 4**
+- **React Icons**
+- **ESLint 9**
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- **Node.js** 18+ (recommended)
+- **npm** 9+
+
+### Installation
+
+```bash
+npm install
+```
+
+### Run in Development
+
+```bash
+npm run dev
+```
+
+Open the local URL shown in your terminal (typically `http://localhost:5173`).
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+### Lint
+
+```bash
+npm run lint
+```
+
+---
+
+## 📁 Project Structure
+
+```text
+.
+├── src/
+│   ├── components/
+│   │   ├── QueueForm.jsx       # Customer intake form
+│   │   └── QueueDisplay.jsx    # Queue list + status/action controls
+│   ├── App.jsx                 # Main app state and layout
+│   ├── App.css
+│   ├── index.css
+│   └── main.jsx
+├── public/
+├── index.html
+├── package.json
+└── vite.config.js
+```
+
+---
+
+## 🔄 Queue Workflow
+
+1. Add a customer and choose a service.
+2. Customer enters the queue with `waiting` status.
+3. Move to `serving` when service starts.
+4. Mark as `completed` when done.
+5. Remove entries from the list when no longer needed.
+
+---
+
+## 🛠️ Available Scripts
+
+| Script | Description |
+|---|---|
+| `npm run dev` | Start local development server |
+| `npm run build` | Create production build |
+| `npm run preview` | Preview production build locally |
+| `npm run lint` | Run ESLint checks |
+
+---
+
+## 📌 Current Scope
+
+This project is currently a **client-side application** (no backend persistence).
+
+Potential next steps:
+- Add API + database persistence
+- Add authentication/roles (admin, staff)
+- Add estimated wait times and analytics
+- Add tests (unit + integration + E2E)
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome.
+
+If you plan to contribute:
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Open a pull request with a clear summary and screenshots (for UI changes)
+
+---
+
+## 📄 License
+
+No license file is currently included in this repository.
+Add a `LICENSE` file (e.g., MIT) to define usage permissions.
