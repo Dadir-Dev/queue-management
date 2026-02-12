@@ -30,6 +30,47 @@ QueueFlow Pro helps teams track customer flow in real time with a clean, dashboa
 
 ---
 
+## 🌐 Live Demo
+
+Live URL: https://queue-management-five.vercel.app/
+
+---
+
+## 📦 Repository
+
+- **GitHub**: [`https://github.com/Dadir-Dev/queue-management`](https://github.com/Dadir-Dev/queue-management)
+
+---
+
+## 🖼️ Screenshots
+
+Desktop layout:
+
+![QueueFlow Pro – Desktop](src/assets/Screenshot%20Desktop%20Design%202026-02-12.png)
+
+Mobile layout:
+
+![QueueFlow Pro – Mobile](src/assets/Screenshot%20Mobile%20Design%202026-02-12.png)
+
+---
+
+## 📬 Contact
+
+For questions, feedback, or bug reports:
+
+- **Open an issue** on GitHub: [`https://github.com/Dadir-Dev/queue-management/issues`](https://github.com/Dadir-Dev/queue-management/issues)
+- LinkedIn: https://www.linkedin.com/in/abdikadir-mohammed-54717318b/
+
+---
+
+## 🙏 Acknowledgements
+
+- **React**, **Vite**, **Tailwind CSS**, and **React Icons** for the amazing tooling ecosystem.
+- The broader **React community** and documentation for best practices and inspiration.
+- Created as part of a **frontend learning journey** focused on modern React and UI design.
+
+---
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -103,12 +144,12 @@ npm run lint
 
 ## 🛠️ Available Scripts
 
-| Script | Description |
-|---|---|
-| `npm run dev` | Start local development server |
-| `npm run build` | Create production build |
+| Script            | Description                      |
+| ----------------- | -------------------------------- |
+| `npm run dev`     | Start local development server   |
+| `npm run build`   | Create production build          |
 | `npm run preview` | Preview production build locally |
-| `npm run lint` | Run ESLint checks |
+| `npm run lint`    | Run ESLint checks                |
 
 ---
 
@@ -117,6 +158,7 @@ npm run lint
 This project is currently a **client-side application** (no backend persistence).
 
 Potential next steps:
+
 - Add API + database persistence
 - Add authentication/roles (admin, staff)
 - Add estimated wait times and analytics
@@ -129,6 +171,7 @@ Potential next steps:
 Contributions are welcome.
 
 If you plan to contribute:
+
 1. Fork the repository
 2. Create a feature branch
 3. Commit your changes
