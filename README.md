@@ -58,8 +58,11 @@ Mobile layout:
 
 For questions, feedback, or bug reports:
 
-- **Open an issue** on GitHub: [`https://github.com/Dadir-Dev/queue-management/issues`](https://github.com/Dadir-Dev/queue-management/issues)
-- LinkedIn: https://www.linkedin.com/in/abdikadir-mohammed-54717318b/
+🧱 [Frontend Mentor](https://www.frontendmentor.io/profile/Dadir-Dev)
+
+🌐 [GitHub](https://github.com/Dadir-Dev)
+
+💼 [LinkedIn](https://www.linkedin.com/in/abdikadir-mohammed-54717318b/)
 
 ---
 
