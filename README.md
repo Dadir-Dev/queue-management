@@ -182,7 +182,6 @@ If you plan to contribute:
 
 ---
 
-## 📄 License
+## 📜 License
 
-No license file is currently included in this repository.
-Add a `LICENSE` file (e.g., MIT) to define usage permissions.
+This project is open source and available under the [MIT License](LICENSE).
