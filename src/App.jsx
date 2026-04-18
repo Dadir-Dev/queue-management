@@ -1,11 +1,31 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import QueueForm from "./components/QueueForm";
 import QueueDisplay from "./components/QueueDisplay";
 import { FiUsers, FiTrendingUp } from "react-icons/fi";
 
 export default function App() {
-  const [queue, setQueue] = useState([]);
+  const [queue, setQueue] = useState(() => {
+    try {
+      const savedQueue = localStorage.getItem("customers-queue");
+      return savedQueue ? JSON.parse(savedQueue) : []
+    } catch (error) {
+      console.error("Failed to load queue from localStorage", error)
+      return [];
+    }
+    
+    
+    
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("customers-queue", JSON.stringify(queue))
+    } catch (error) {
+      console.error("Failed to save queue to localStorage", error)
+    }
+  }, [queue])
+  
 
   const addToQueue = (customerData) => {
     setQueue((prevQueue) => {
