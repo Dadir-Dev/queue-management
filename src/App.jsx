@@ -8,24 +8,20 @@ export default function App() {
   const [queue, setQueue] = useState(() => {
     try {
       const savedQueue = localStorage.getItem("customers-queue");
-      return savedQueue ? JSON.parse(savedQueue) : []
+      return savedQueue ? JSON.parse(savedQueue) : [];
     } catch (error) {
-      console.error("Failed to load queue from localStorage", error)
+      console.error("Failed to load queue from localStorage", error);
       return [];
     }
-    
-    
-    
   });
 
   useEffect(() => {
     try {
-      localStorage.setItem("customers-queue", JSON.stringify(queue))
+      localStorage.setItem("customers-queue", JSON.stringify(queue));
     } catch (error) {
-      console.error("Failed to save queue to localStorage", error)
+      console.error("Failed to save queue to localStorage", error);
     }
-  }, [queue])
-  
+  }, [queue]);
 
   const addToQueue = (customerData) => {
     setQueue((prevQueue) => {
@@ -44,20 +40,20 @@ export default function App() {
   };
 
   const removeFromQueue = (id) =>
-    setQueue(queue.filter((customer) => customer.id !== id));
+    setQueue((prevQueue) => prevQueue.filter((customer) => customer.id !== id));
 
   const updateStatus = (id, newStatus) =>
-    setQueue(
-      queue.map((customer) =>
-        customer.id === id ? { ...customer, status: newStatus } : customer
-      )
+    setQueue((prev) =>
+      prev.map((customer) =>
+        customer.id === id ? { ...customer, status: newStatus } : customer,
+      ),
     );
 
   const waitingCount = queue.filter((item) => item.status === "waiting").length;
   const servingCount = queue.filter((item) => item.status === "serving").length;
 
   return (
-    <div className="App min-h-screen bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-900 p-4 md:p-8 text-white">
+    <div className="App min-h-screen bg-linear-to-br from-slate-900 via-slate-900 to-indigo-900 p-4 md:p-8 text-white">
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse"></div>
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse delay-1000"></div>
@@ -65,9 +61,9 @@ export default function App() {
 
       <div className="relative z-10 max-w-7xl mx-auto">
         <header className="text-center mb-10 md:mb-16">
-          <div className="inline-flex items-center justify-center p-3 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl mb-6 shadow-xl">
+          <div className="inline-flex items-center justify-center p-3 bg-linear-to-r from-indigo-500 to-purple-600 rounded-2xl mb-6 shadow-xl">
             <FiUsers className="text-3xl mr-3" />
-            <h1 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-200">
+            <h1 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-linear-to-r from-white to-blue-200">
               QueueFlow Pro
             </h1>
           </div>
@@ -100,9 +96,9 @@ export default function App() {
 
         <main className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="space-y-6">
-            <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50 shadow-2xl">
+            <div className="bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50 shadow-2xl">
               <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg">
+                <div className="p-2 bg-linear-to-r from-indigo-500 to-purple-600 rounded-lg">
                   <FiTrendingUp className="text-xl" />
                 </div>
                 <h2 className="text-2xl font-bold text-white">
@@ -113,7 +109,7 @@ export default function App() {
             </div>
 
             {/* Instructions Card */}
-            <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50 shadow-2xl">
+            <div className="bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50 shadow-2xl">
               <h3 className="text-lg font-semibold mb-3 text-cyan-300">
                 How to Use
               </h3>
@@ -138,7 +134,7 @@ export default function App() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50 shadow-2xl h-fit">
+          <div className="bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50 shadow-2xl h-fit">
             <QueueDisplay
               queueList={queue}
               onUpdateStatus={updateStatus}
