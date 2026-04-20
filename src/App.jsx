@@ -2,9 +2,15 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import QueueForm from "./components/QueueForm";
 import QueueDisplay from "./components/QueueDisplay";
-import { FiUsers, FiTrendingUp } from "react-icons/fi";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import { FiTrendingUp } from "react-icons/fi";
+import { useTheme } from "./context/useTheme";
 
 export default function App() {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+
   const [queue, setQueue] = useState(() => {
     try {
       const savedQueue = localStorage.getItem("customers-queue");
@@ -52,89 +58,82 @@ export default function App() {
   const waitingCount = queue.filter((item) => item.status === "waiting").length;
   const servingCount = queue.filter((item) => item.status === "serving").length;
 
+  const shellClass = isDark
+    ? "App min-h-screen bg-linear-to-br from-slate-900 via-slate-900 to-indigo-900 p-4 text-white md:p-8"
+    : "App min-h-screen bg-linear-to-br from-slate-100 via-white to-indigo-50 p-4 text-slate-900 md:p-8";
+
+  const orbTopClass = isDark
+    ? "absolute -top-40 -right-40 h-80 w-80 animate-pulse rounded-full bg-purple-500 opacity-10 mix-blend-multiply blur-3xl filter"
+    : "absolute -top-40 -right-40 h-80 w-80 animate-pulse rounded-full bg-purple-400 opacity-25 mix-blend-multiply blur-3xl filter";
+
+  const orbBottomClass = isDark
+    ? "absolute -bottom-40 -left-40 h-80 w-80 animate-pulse rounded-full bg-blue-500 opacity-10 mix-blend-multiply blur-3xl filter delay-1000"
+    : "absolute -bottom-40 -left-40 h-80 w-80 animate-pulse rounded-full bg-indigo-400 opacity-20 mix-blend-multiply blur-3xl filter delay-1000";
+
+  const cardClass = isDark
+    ? "rounded-2xl border border-slate-700/50 bg-linear-to-br from-slate-800/50 to-slate-900/50 p-6 shadow-2xl backdrop-blur-sm"
+    : "rounded-2xl border border-slate-200/90 bg-linear-to-br from-white to-slate-50/90 p-6 shadow-xl shadow-indigo-100/40 backdrop-blur-sm";
+
+  const sectionTitleClass = isDark ? "text-2xl font-bold text-white" : "text-2xl font-bold text-slate-900";
+
+  const instructionsHeadingClass = isDark
+    ? "mb-3 text-lg font-semibold text-cyan-300"
+    : "mb-3 text-lg font-semibold text-cyan-700";
+
+  const instructionsListClass = isDark
+    ? "space-y-2 text-left text-sm text-gray-300"
+    : "space-y-2 text-left text-sm text-slate-600";
+
   return (
-    <div className="App min-h-screen bg-linear-to-br from-slate-900 via-slate-900 to-indigo-900 p-4 md:p-8 text-white">
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse delay-1000"></div>
+    <div className={shellClass}>
+      <div className="pointer-events-none fixed inset-0 overflow-hidden">
+        <div className={orbTopClass}></div>
+        <div className={orbBottomClass}></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto">
-        <header className="text-center mb-10 md:mb-16">
-          <div className="inline-flex items-center justify-center p-3 bg-linear-to-r from-indigo-500 to-purple-600 rounded-2xl mb-6 shadow-xl">
-            <FiUsers className="text-3xl mr-3" />
-            <h1 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-linear-to-r from-white to-blue-200">
-              QueueFlow Pro
-            </h1>
-          </div>
-          <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
-            Streamline customer management with real-time tracking and smart
-            queue optimization
-          </p>
+      <div className="relative z-10 mx-auto max-w-7xl">
+        <Header
+          totalInQueue={queue.length}
+          waitingCount={waitingCount}
+          servingCount={servingCount}
+        />
 
-          <div className="flex flex-wrap justify-center gap-4 mt-8">
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 min-w-[140px] border border-white/20 shadow-lg">
-              <div className="text-2xl font-bold text-cyan-300">
-                {queue.length}
-              </div>
-              <div className="text-sm text-gray-300">Total in Queue</div>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 min-w-[140px] border border-white/20 shadow-lg">
-              <div className="text-2xl font-bold text-amber-300">
-                {waitingCount}
-              </div>
-              <div className="text-sm text-gray-300">Waiting</div>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 min-w-[140px] border border-white/20 shadow-lg">
-              <div className="text-2xl font-bold text-emerald-300">
-                {servingCount}
-              </div>
-              <div className="text-sm text-gray-300">Being Served</div>
-            </div>
-          </div>
-        </header>
-
-        <main className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <main className="grid grid-cols-1 gap-8 lg:grid-cols-2">
           <div className="space-y-6">
-            <div className="bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50 shadow-2xl">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 bg-linear-to-r from-indigo-500 to-purple-600 rounded-lg">
+            <div className={cardClass}>
+              <div className="mb-6 flex items-center gap-3">
+                <div className="rounded-lg bg-linear-to-r from-indigo-500 to-purple-600 p-2 text-white">
                   <FiTrendingUp className="text-xl" />
                 </div>
-                <h2 className="text-2xl font-bold text-white">
-                  Add New Customer
-                </h2>
+                <h2 className={sectionTitleClass}>Add New Customer</h2>
               </div>
               <QueueForm onAddCustomer={addToQueue} />
             </div>
 
-            {/* Instructions Card */}
-            <div className="bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50 shadow-2xl">
-              <h3 className="text-lg font-semibold mb-3 text-cyan-300">
-                How to Use
-              </h3>
-              <ul className="space-y-2 text-sm text-gray-300 text-left">
+            <div className={cardClass}>
+              <h3 className={instructionsHeadingClass}>How to Use</h3>
+              <ul className={instructionsListClass}>
                 <li className="flex items-start gap-2">
-                  <span className="inline-block w-2 h-2 bg-cyan-500 rounded-full mt-1.5"></span>
+                  <span className="mt-1.5 inline-block h-2 w-2 rounded-full bg-cyan-500"></span>
                   Add customers with their required service
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="inline-block w-2 h-2 bg-cyan-500 rounded-full mt-1.5"></span>
-                  Click "Serve" when starting service
+                  <span className="mt-1.5 inline-block h-2 w-2 rounded-full bg-cyan-500"></span>
+                  Click &quot;Serve&quot; when starting service
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="inline-block w-2 h-2 bg-cyan-500 rounded-full mt-1.5"></span>
-                  Mark as "Complete" when finished
+                  <span className="mt-1.5 inline-block h-2 w-2 rounded-full bg-cyan-500"></span>
+                  Mark as &quot;Complete&quot; when finished
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="inline-block w-2 h-2 bg-cyan-500 rounded-full mt-1.5"></span>
+                  <span className="mt-1.5 inline-block h-2 w-2 rounded-full bg-cyan-500"></span>
                   Remove customers from queue as needed
                 </li>
               </ul>
             </div>
           </div>
 
-          <div className="bg-linear-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50 shadow-2xl h-fit">
+          <div className={`${cardClass} h-fit`}>
             <QueueDisplay
               queueList={queue}
               onUpdateStatus={updateStatus}
@@ -143,15 +142,7 @@ export default function App() {
           </div>
         </main>
 
-        <footer className="mt-12 pt-6 border-t border-slate-700/50 text-center text-gray-400 text-sm">
-          <p>
-            QueueFlow Pro • Modern Queue Management System • Built with React &
-            Tailwind CSS
-          </p>
-          <p className="mt-2">
-            Optimize your customer flow with real-time tracking
-          </p>
-        </footer>
+        <Footer />
       </div>
     </div>
   );
