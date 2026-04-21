@@ -1,5 +1,6 @@
 import { FiUsers, FiSun, FiMoon } from "react-icons/fi";
 import { useTheme } from "../context/useTheme";
+import CircularLogo from "./CircularLogo";
 
 function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
@@ -11,23 +12,21 @@ function ThemeToggle() {
       onClick={toggleTheme}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       className={`relative inline-flex h-11 w-21 shrink-0 items-center rounded-full p-1 shadow-lg transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/80 focus-visible:ring-offset-2 ${
-        isDark
-          ? "bg-linear-to-r from-slate-800 to-slate-900 ring-1 ring-white/15 focus-visible:ring-offset-slate-900"
-          : "bg-linear-to-r from-indigo-100 to-violet-100 ring-1 ring-indigo-200/80 focus-visible:ring-offset-white"
+        isDark ?
+          "bg-linear-to-r from-slate-800 to-slate-900 ring-1 ring-white/15 focus-visible:ring-offset-slate-900"
+        : "bg-linear-to-r from-indigo-100 to-violet-100 ring-1 ring-indigo-200/80 focus-visible:ring-offset-white"
       }`}
     >
       <span
         className={`pointer-events-none absolute left-1 top-1 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-linear-to-br shadow-md transition-transform duration-300 ease-out ${
-          isDark
-            ? "translate-x-0 from-indigo-500 to-purple-600 text-white"
-            : "translate-x-10 from-amber-400 to-orange-400 text-white"
+          isDark ?
+            "translate-x-0 from-indigo-500 to-purple-600 text-white"
+          : "translate-x-10 from-amber-400 to-orange-400 text-white"
         }`}
       >
-        {isDark ? (
+        {isDark ?
           <FiMoon className="text-lg" aria-hidden />
-        ) : (
-          <FiSun className="text-lg" aria-hidden />
-        )}
+        : <FiSun className="text-lg" aria-hidden />}
       </span>
       <span
         className={`flex w-full justify-between px-2 text-xs font-semibold ${
@@ -53,11 +52,7 @@ function ThemeToggle() {
   );
 }
 
-export default function Header({
-  totalInQueue,
-  waitingCount,
-  servingCount,
-}) {
+export default function Header({ totalInQueue, waitingCount, servingCount }) {
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
@@ -67,6 +62,9 @@ export default function Header({
         isDark ? "text-white" : "text-slate-900"
       }`}
     >
+      <div className="mb-6 hidden md:flex justify-center md:absolute md:left-0 md:top-0 md:mb-0 md:justify-start">
+        <CircularLogo className="hover:scale-110 shadow-lg shadow-indigo-500/50 transition-transform duration-300" />
+      </div>
       <div className="mb-6 flex justify-center md:absolute md:right-0 md:top-0 md:mb-0 md:justify-end">
         <ThemeToggle />
       </div>
@@ -82,7 +80,7 @@ export default function Header({
         </h1>
       </div>
       <p
-        className={`mx-auto mt-6 max-w-2xl text-lg md:text-xl ${
+        className={`mx-auto mt-6 md:mt-10 max-w-2xl text-lg md:text-xl ${
           isDark ? "text-gray-300" : "text-slate-600"
         }`}
       >
@@ -92,10 +90,10 @@ export default function Header({
 
       <div className="mt-8 flex flex-wrap justify-center gap-4">
         <div
-          className={`min-w-[140px] rounded-xl p-4 shadow-lg backdrop-blur-sm ${
-            isDark
-              ? "border border-white/20 bg-white/10"
-              : "border border-indigo-100/80 bg-white/90 shadow-indigo-100/50"
+          className={`min-w-35 rounded-xl p-4 shadow-lg backdrop-blur-sm ${
+            isDark ?
+              "border border-white/20 bg-white/10"
+            : "border border-indigo-100/80 bg-white/90 shadow-indigo-100/50"
           }`}
         >
           <div
@@ -105,15 +103,17 @@ export default function Header({
           >
             {totalInQueue}
           </div>
-          <div className={`text-sm ${isDark ? "text-gray-300" : "text-slate-500"}`}>
+          <div
+            className={`text-sm ${isDark ? "text-gray-300" : "text-slate-500"}`}
+          >
             Total in Queue
           </div>
         </div>
         <div
-          className={`min-w-[140px] rounded-xl p-4 shadow-lg backdrop-blur-sm ${
-            isDark
-              ? "border border-white/20 bg-white/10"
-              : "border border-indigo-100/80 bg-white/90 shadow-indigo-100/50"
+          className={`min-w-35 rounded-xl p-4 shadow-lg backdrop-blur-sm ${
+            isDark ?
+              "border border-white/20 bg-white/10"
+            : "border border-indigo-100/80 bg-white/90 shadow-indigo-100/50"
           }`}
         >
           <div
@@ -123,15 +123,17 @@ export default function Header({
           >
             {waitingCount}
           </div>
-          <div className={`text-sm ${isDark ? "text-gray-300" : "text-slate-500"}`}>
+          <div
+            className={`text-sm ${isDark ? "text-gray-300" : "text-slate-500"}`}
+          >
             Waiting
           </div>
         </div>
         <div
-          className={`min-w-[140px] rounded-xl p-4 shadow-lg backdrop-blur-sm ${
-            isDark
-              ? "border border-white/20 bg-white/10"
-              : "border border-indigo-100/80 bg-white/90 shadow-indigo-100/50"
+          className={`min-w-35 rounded-xl p-4 shadow-lg backdrop-blur-sm ${
+            isDark ?
+              "border border-white/20 bg-white/10"
+            : "border border-indigo-100/80 bg-white/90 shadow-indigo-100/50"
           }`}
         >
           <div
@@ -141,7 +143,9 @@ export default function Header({
           >
             {servingCount}
           </div>
-          <div className={`text-sm ${isDark ? "text-gray-300" : "text-slate-500"}`}>
+          <div
+            className={`text-sm ${isDark ? "text-gray-300" : "text-slate-500"}`}
+          >
             Being Served
           </div>
         </div>
