@@ -4,6 +4,7 @@ import { FiUser, FiSettings } from "react-icons/fi";
 import { useTheme } from "../context/useTheme";
 
 export default function QueueForm({ onAddCustomer }) {
+  // ... (Keep existing state and handlers)
   const { theme } = useTheme();
   const isDark = theme === "dark";
 
@@ -44,8 +45,8 @@ export default function QueueForm({ onAddCustomer }) {
   const iconAccentClass = isDark ? "text-cyan-400" : "text-cyan-600";
 
   const inputClass = isDark
-    ? "w-full rounded-xl border-2 border-slate-700 bg-slate-900/70 px-4 py-3 text-white placeholder-gray-500 transition-all duration-300 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/30"
-    : "w-full rounded-xl border-2 border-slate-200 bg-white px-4 py-3 text-slate-900 placeholder-slate-400 transition-all duration-300 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/25";
+    ? "w-full rounded-xl border-2 border-slate-700 bg-slate-900/70 px-3 py-2 lg:px-4 lg:py-3 text-white placeholder-gray-500 transition-all duration-300 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/30"
+    : "w-full rounded-xl border-2 border-slate-200 bg-white px-3 py-2 lg:px-4 lg:py-3 text-slate-900 placeholder-slate-400 transition-all duration-300 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/25";
 
   const selectOptionMutedClass = isDark
     ? "bg-slate-900 text-gray-400"
@@ -53,15 +54,15 @@ export default function QueueForm({ onAddCustomer }) {
 
   const selectOptionClass = isDark ? "bg-slate-900" : "bg-white";
 
-  const footerBorderClass = isDark ? "border-slate-700/50" : "border-slate-200";
-
-  const footerHintClass = isDark ? "text-xs text-center text-gray-500" : "text-xs text-center text-slate-500";
-
   return (
-    <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-      <div className="space-y-2">
+    <form
+      ref={formRef}
+      onSubmit={handleSubmit}
+      className="space-y-4 lg:space-y-6"
+    >
+      <div className="space-y-1 lg:space-y-2">
         <label className={labelClass}>
-          <div className="mb-2 flex items-center gap-2">
+          <div className="mb-1 lg:mb-2 flex items-center gap-2">
             <FiUser className={iconAccentClass} />
             Customer Name
           </div>
@@ -76,9 +77,9 @@ export default function QueueForm({ onAddCustomer }) {
         </label>
       </div>
 
-      <div className="space-y-2">
+      <div className="space-y-1 lg:space-y-2">
         <label className={labelClass}>
-          <div className="mb-2 flex items-center gap-2">
+          <div className="mb-1 lg:mb-2 flex items-center gap-2">
             <FiSettings className={iconAccentClass} />
             Service Type
           </div>
@@ -111,20 +112,14 @@ export default function QueueForm({ onAddCustomer }) {
 
       <button
         type="submit"
-        className="group relative w-full overflow-hidden rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 px-6 py-3 font-semibold text-white shadow-xl shadow-cyan-500/25 transition-all duration-300 hover:from-cyan-600 hover:to-blue-700 active:scale-95"
+        className="group relative w-full overflow-hidden rounded-xl bg-linear-to-r from-cyan-500 to-blue-600 px-4 py-2.5 lg:px-6 lg:py-3 font-semibold text-white shadow-xl shadow-cyan-500/25 transition-all duration-300 hover:from-cyan-600 hover:to-blue-700 active:scale-95"
       >
-        <div className="absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-white/10 to-transparent transition-transform duration-1000 group-hover:translate-x-[100%]"></div>
-        <span className="relative inline-flex items-center justify-center gap-3">
-          <FaUserPlus className="text-lg" />
+        <div className="absolute inset-0 translate-x-full bg-linear-to-r from-white/10 to-transparent transition-transform duration-1000 group-hover:translate-x-full"></div>
+        <span className="relative inline-flex items-center justify-center gap-2 lg:gap-3 text-sm lg:text-base">
+          <FaUserPlus className="text-base lg:text-lg" />
           Add to Queue
         </span>
       </button>
-
-      <div className={`border-t pt-4 ${footerBorderClass}`}>
-        <p className={footerHintClass}>
-          Press Enter to quickly add customers • Use clear, descriptive names
-        </p>
-      </div>
     </form>
   );
 }
