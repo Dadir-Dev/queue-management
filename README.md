@@ -1,5 +1,10 @@
 # QueueFlow Pro
 
+<div>
+  <img src="./src/assets/logo.png" width="300" height="300" alt="QueueFlow Pro logo"  />
+
+</div>
+
 A modern, frontend-first queue management application built with **React + Vite** and styled with **Tailwind CSS**.
 
 QueueFlow Pro helps teams track customer flow in real time with a clean, dashboard-like interface for adding customers, updating service status, and monitoring queue health.
@@ -16,7 +21,19 @@ QueueFlow Pro helps teams track customer flow in real time with a clean, dashboa
   - Start serving
   - Mark complete
   - Remove customer
-- **Modern UI** with gradient glassmorphism and responsive layout
+- **Branded UI update** with an integrated QueueFlow Pro logo
+- **Dark mode** support with seamless theme switching
+- **Persistence** of queue state and theme preference using `localStorage`
+- **Enhanced responsive experience** for mobile, tablet, and desktop screens
+
+---
+
+## 📱 Responsive Design
+
+- Mobile-first spacing and typography adjustments across forms, cards, and queue items
+- Smooth layout scaling through `md` and `lg` breakpoints (single-column to two-column dashboard)
+- Adaptive action controls in queue cards (compact icon actions on smaller screens, full text actions on larger screens)
+- Improved header/stat card wrapping for better usability on narrow and medium-width devices
 
 ---
 
@@ -96,28 +113,45 @@ npm run lint
 
 ```text
 .
+├── public/
+│   ├── images/
+│   │   └── socials/
+│   │       ├── github-color-svgrepo-com.svg
+│   │       ├── linkedin-svgrepo-com.svg
+│   │       └── x.svg
+│   └── vite.svg
 ├── src/
+│   ├── assets/
+│   │   ├── logo.png
+│   │   ├── Desktop_View_2026_04_21.png
+│   │   └── Mobile_View_2026-04-24.png
 │   ├── components/
-|   |   ├── Header.jsx          # Theme toggle + queue stats
-│   │   ├── QueueForm.jsx       # Customer intake form
-|   |   ├── CircularLogo.jsx
-|   |   ├── Footer.jsx
-│   │   └── QueueDisplay.jsx    # Queue list + status/action controls
-
-|   ├── context/
-|   |   ├── themeContext.js
-|   |   ├── ThemeContext.jsx    # Theme provider + theme toggle function
-|   |   ├── useTheme.js         # custom theme hook
-
-│   ├── App.jsx                 # Main app state and layout
+│   │   ├── CircularLogo.jsx      # Reusable animated brand logo
+│   │   ├── Header.jsx            # Header + queue stats + theme toggle
+│   │   ├── QueueForm.jsx         # Customer intake form
+│   │   ├── QueueDisplay.jsx      # Queue list + status/action controls
+│   │   └── Footer.jsx
+│   ├── context/
+│   │   ├── ThemeContext.jsx      # Theme provider + persistence
+│   │   ├── themeContext.js       # Theme context definition
+│   │   └── useTheme.js           # Custom theme hook
+│   ├── App.jsx                   # Main app state and layout orchestration
 │   ├── App.css
 │   ├── index.css
 │   └── main.jsx
-├── public/
 ├── index.html
 ├── package.json
+├── tailwind.config.js
 └── vite.config.js
 ```
+
+---
+
+## 🧩 Component Architecture
+
+- `App.jsx` manages queue state, localStorage persistence, and top-level layout composition.
+- UI responsibilities are split into focused components (`Header`, `QueueForm`, `QueueDisplay`, `Footer`, and `CircularLogo`).
+- Theme behavior is centralized through context (`ThemeContext.jsx`, `themeContext.js`) and consumed via the reusable `useTheme` hook.
 
 ---
 
