@@ -44,33 +44,10 @@ Live URL: https://queue-management-five.vercel.app/
 
 ## 🖼️ Screenshots
 
-Desktop layout:
-
-![QueueFlow Pro – Desktop](src/assets/Screenshot%20Desktop%20Design%202026-02-12.png)
-
-Mobile layout:
-
-![QueueFlow Pro – Mobile](src/assets/Screenshot%20Mobile%20Design%202026-02-12.png)
-
----
-
-## 📬 Contact
-
-For questions, feedback, or bug reports:
-
-🧱 [Frontend Mentor](https://www.frontendmentor.io/profile/Dadir-Dev)
-
-🌐 [GitHub](https://github.com/Dadir-Dev)
-
-💼 [LinkedIn](https://www.linkedin.com/in/abdikadir-mohammed-54717318b/)
-
----
-
-## 🙏 Acknowledgements
-
-- **React**, **Vite**, **Tailwind CSS**, and **React Icons** for the amazing tooling ecosystem.
-- The broader **React community** and documentation for best practices and inspiration.
-- Created as part of a **frontend learning journey** focused on modern React and UI design.
+<div style="display:flex;gap:1rem;align-items:center;justify-content:center;flex-wrap:wrap;">
+  <img src="./src/assets/Desktop_View_2026_04_21.png" alt="QueueFlow Pro desktop view" style="max-width:900px;width:65%;height:auto;" />
+  <img src="./src/assets/Mobile_View_2026-04-24.png" alt="QueueFlow Pro mobile preview" style="max-width:300px;width:30%;height:auto;" />
+</div>
 
 ---
 
@@ -121,8 +98,17 @@ npm run lint
 .
 ├── src/
 │   ├── components/
+|   |   ├── Header.jsx          # Theme toggle + queue stats
 │   │   ├── QueueForm.jsx       # Customer intake form
+|   |   ├── CircularLogo.jsx
+|   |   ├── Footer.jsx
 │   │   └── QueueDisplay.jsx    # Queue list + status/action controls
+
+|   ├── context/
+|   |   ├── themeContext.js
+|   |   ├── ThemeContext.jsx    # Theme provider + theme toggle function
+|   |   ├── useTheme.js         # custom theme hook
+
 │   ├── App.jsx                 # Main app state and layout
 │   ├── App.css
 │   ├── index.css
@@ -181,6 +167,30 @@ If you plan to contribute:
 4. Open a pull request with a clear summary and screenshots (for UI changes)
 
 ---
+
+## 🙏 Acknowledgements
+
+- **React**, **Vite**, **Tailwind CSS**, and **React Icons** for the amazing tooling ecosystem.
+- The broader **React community** and documentation for best practices and inspiration.
+- Created as part of a **frontend learning journey** focused on modern React and UI design.
+
+---
+
+## 👨‍💻 Author
+
+**Abdikadir Mohammed(Dadir Dev)**
+
+<p align="left">
+<a href="https://github.com/Dadir-Dev" target="_blank" rel="noopener noreferrer">
+   <img src="./public/images/socials/github-color-svgrepo-com.svg" alt="GitHub" width="35" />
+</a>
+<a href="https://www.linkedin.com/in/abdikadir-mohammed-54717318b/" target="_blank" rel="noopener noreferrer">
+   <img src="./public/images/socials/linkedin-svgrepo-com.svg" alt="LinkedIn" width="40" />
+</a>
+<a href="https://x.com/Dadir_Dev" target="_blank" rel="noopener noreferrer">
+   <img src="./public/images/socials/x.svg" alt="X" width="33" />
+</a>
+</p>
 
 ## 📜 License
 
