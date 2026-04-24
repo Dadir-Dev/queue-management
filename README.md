@@ -1,10 +1,5 @@
 # QueueFlow Pro
 
-<div>
-  <img src="./src/assets/logo.png" width="300" height="300" alt="QueueFlow Pro logo"  />
-
-</div>
-
 A modern, frontend-first queue management application built with **React + Vite** and styled with **Tailwind CSS**.
 
 QueueFlow Pro helps teams track customer flow in real time with a clean, dashboard-like interface for adding customers, updating service status, and monitoring queue health.
@@ -59,7 +54,16 @@ Live URL: https://queue-management-five.vercel.app/
 
 ---
 
-## 🖼️ Screenshots
+## 🖼️ Visuals
+
+### Logo
+
+<div>
+  <img src="./src/assets/logo.png" width="300" height="300" alt="QueueFlow Pro logo"  />
+
+</div>
+
+### App Screenshots
 
 <div style="display:flex;gap:1rem;align-items:center;justify-content:center;flex-wrap:wrap;">
   <img src="./src/assets/Desktop_View_2026_04_21.png" alt="QueueFlow Pro desktop view" style="max-width:900px;width:65%;height:auto;" />
